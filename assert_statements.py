@@ -12,4 +12,4 @@ def run():
         print("terminó mi programa")
 
 if __name__ == '__main__':
-    run
+    run()
