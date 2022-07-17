@@ -1,15 +1,23 @@
-def number_primo(numberp: int) -> int:
-        number_primo = input("digita un numero")
-            for i in range(i, number_primo):
-                if number_primo % i == 0
-                return("no es numero primo")
+def es_primo(number: int) ->bool:
+    contador = 0
 
-
-
-
+    for i in range(1, number + 1):
+        if i == 1 or i == number:
+            continue
+        if number % i == 0:
+            contador += 1
+    if contador == 0:
+        return True
+    else:
+        return False
 
 def run():
-    print(number_primo)
+    number = int(input("Escribe un nùmero: "))
+    if es_primo(number):
+        print("Es primo")
+
+    else:
+        print("No es primo")
 
 if __name__ == '__main__':
     run()
