@@ -1,6 +1,6 @@
-from array import array
 
-class array:
+
+class Arreglo:
     def __init__(self, capacity, fill_value=None):
         self.items = list()
         for i in range(capacity):
@@ -10,7 +10,7 @@ class array:
         return len(self.items)
     
     def __str__(self):
-        return str(self.times)
+        return str(self.items)
     
     def __iter__(self):
         return iter(self.items)
@@ -20,3 +20,6 @@ class array:
 
     def __setitem__(self, index, new_item):
         self.items[index] = new_item
+
+# if __name__ == '__main__':
+#    menu = Array(5)
