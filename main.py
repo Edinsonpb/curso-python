@@ -31,18 +31,22 @@ def _print_welcome():
     print("what would you like to do today?")
     print("[C]reate client")
     print("[D]elete client")
+    print("[U]pdate client")
 
 
 if __name__ == '__main__':
     _print_welcome()
 
     Command = input()
+    Command = Command.upper()
 
     if Command == "C":
         client_name = input("what is the client name? ")
         create_client(client_name)
         list_clients()
     elif Command == "D":
+        pass
+    elif: Command == "U":
         pass
     else:
         print("Invalid command")
