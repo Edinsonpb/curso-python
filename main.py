@@ -1,8 +1,25 @@
+import email
 from http import client
+from turtle import position
+from unicodedata import name
+from attr import field
 from setuptools import Command
 import sys
 
-clients = ["pablo","ricardo"]
+clients = [
+    {
+        "name": "Pablo",
+        "company": "Google",
+        "email": "pablo@google.com",
+        "position": "software engineer",
+    },
+    {
+        "name": "Ricardo",
+        "company": "Facebook",
+        "email": "ricardo@facebook.com",
+        "position": "data engineer",
+    }
+]
 
 
 def create_client(client_name):
@@ -18,7 +35,13 @@ def create_client(client_name):
 
 def list_clients():
     for idx, client in enumerate(clients):
-        print("{}: {}".format(idx, client))
+        print("{uid} | {name} | {company} | {email} | {position}".format(
+            uid=idx,
+            name=client["name"],
+            company=client["company"],
+            email=client["email"],
+            position=client["position"]
+        ))
 #    global clients
 #    print(clients)
 
@@ -69,6 +92,14 @@ def _print_welcome():
     print("[S]earch client")
 
 
+def _get_client_field(field_name):
+    field = None
+
+    while not field:
+        field = input("What is the client {}?".format(field_name))
+    return field
+
+
 def _get_client_name():
     client_name = None
     while not client_name:
@@ -90,8 +121,15 @@ if __name__ == '__main__':
     Command = Command.upper()
 
     if Command == "C":
-        client_name = _get_client_name()
-        create_client(client_name)
+        client = {
+            "name": _get_client_field("name"),
+            "company": _get_client_field("company"),
+            "email": _get_client_field("email"),
+            "position": _get_client_field("position"),
+        }
+
+#        client_name = _get_client_name()
+        create_client(client)
         list_clients()
     elif Command == "D":
         client_name = _get_client_name()
