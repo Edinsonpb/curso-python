@@ -27,7 +27,9 @@ def update_client(client_name, updated_client_name):
     global clients
 
     if client_name in clients:
-        clients = clients.replace(client_name + ",", updated_client_name + ",")
+        index = clients.index(client_name)
+        clients[index] = updated_client_name
+#        clients = clients.replace(client_name + ",", updated_client_name + ",")
     else:
         print("client is not in clients list")
 
@@ -36,25 +38,25 @@ def delete_client(client_name):
     global clients
 
     if client_name in clients:
-        clients = clients.replace(client_name + ",", "")
+        clients.remove(client_name)
+#        clients = clients.replace(client_name + ",", "")
     else:
         print("client is not in clients list")
 
 
-
 def search_client(client_name):
-    clients_list = clients.split(",")
+#    clients_list = clients.split(",")
 
-    for client in clients_list:
+    for client in clients:
         if client != client_name:
             continue
         else:
             return True
 
 
-def _add_comma():
-    global clients
-    clients += ","
+#def _add_comma():
+#    global clients
+#    clients += ","
 
 
 def _print_welcome():
