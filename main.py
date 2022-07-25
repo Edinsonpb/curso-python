@@ -2,17 +2,25 @@ from http import client
 from setuptools import Command
 import sys
 
-clients = "pablo,ricardo,"
+clients = ["pablo","ricardo"]
 
 
 def create_client(client_name):
     global clients
     
     if client_name not in clients:
-        clients += client_name
-        _add_comma()
+        clients.append(client_name)
+#        clients += client_name
+#        _add_comma()
     else:
         print("client already is in the client's list")
+
+
+def list_clients():
+    for idx, client in enumerate(clients):
+        print("{}: {}".format(idx, client))
+#    global clients
+#    print(clients)
 
 
 def update_client(client_name, updated_client_name):
@@ -32,10 +40,6 @@ def delete_client(client_name):
     else:
         print("client is not in clients list")
 
-
-def list_clients():
-    global clients
-    print(clients)
 
 
 def search_client(client_name):
