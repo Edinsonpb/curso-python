@@ -1,38 +1,38 @@
 from cmd import PROMPT
 import click
 
-from clients.services import Clientservice
+from clients.services import ClientService
 from clients.models import Client
 
 @click.group()
 def clients():
     """Manages the clients lifecycle"""
-
+    pass
 
 @clients.command()
 @click.option("-n", "--name",
                 type=str,
-                PROMPT=True,
+                prompt=True,
                 help="The client name")
 @click.option("-c", "--company",
                 type=str,
-                PROMPT=True,
+                prompt=True,
                 help="The client company")
 @click.option("-e", "--email",
                 type=str,
-                PROMPT=True,
+                prompt=True,
                 help="The client email")
 @click.option("-p", "--position",
                 type=str,
-                PROMPT=True,
+                prompt=True,
                 help="The client position")
 @click.pass_context
 def create(ctx, name, company, email, position):
     """Creates a new client"""
-    client = client(name, company, email, position)
-    client_service = Clientservice(ctx.obj["clients_table"])
+    client = Client(name, company, email, position)
+    client_service = ClientService(ctx.obj['clients_table'])
 
-    client_service.creacte_client(client)
+    client_service.create_client(client)
 
 @clients.command()
 @click.pass_context

@@ -1,10 +1,11 @@
 
 from xml.dom.pulldom import PROCESSING_INSTRUCTION
 
+import uuid
 
 class Client:
     
-    def __init__(self, name, company, email, position, uid=None):
+    def __init__(self, name, company, email, position, uid =None):
         self.name = name
         self.company = company
         self.email = email
